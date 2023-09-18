@@ -3,16 +3,19 @@
 /**
  * Module dependencies.
  */
+import debug from 'debug';
 
-var app = require('../app');
-var debug = require('debug')('chat-server:server');
-var http = require('http');
+import app from './app.js';
+import socket from './socket/index.js';
+
+const debugServer = debug('chat-server:server');
+import  http from 'http';
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '6060');
 app.set('port', port);
 
 /**
@@ -20,7 +23,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
+socket(server)
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -86,5 +89,7 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+    debugServer('Listening on ' + bind);
+
+    console.log(`server listening on port: ${port}`)
 }
