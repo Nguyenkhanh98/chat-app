@@ -2,7 +2,7 @@
 
 Please keep current all settings except DATABASE_URL in server to make sure everything work well.
 
-demo video : https://drive.google.com/file/d/1JWW4GpQph2_XA0mD-1t3PlHl-J5bOJaj/view?usp=sharing
+demo video : https://drive.google.com/file/d/1nm_RdrAwPW-NWWlPrWb8xj-VVVbzx24I/view?usp=sharing
 
 # Enviroments
 
