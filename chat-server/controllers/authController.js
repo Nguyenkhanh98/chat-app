@@ -12,9 +12,9 @@ export const checkUser = async (request, response, next) => {
     const user = await prisma.user.findUnique({ where: { email } });
 
     if (!user) {
-      return response.error({  msg: "User not found"}, StatusCodes.BAD_REQUEST, ReasonPhrases.BAD_REQUEST);
+      return response.error( StatusCodes.BAD_REQUEST, "User not found");
     } else
-    return response.success({  msg: "User Found", data: user}, StatusCodes.OK, ReasonPhrases.OK);
+    return response.success({  data: user}, StatusCodes.OK, ReasonPhrases.OK);
   } catch (error) {
     next(error);
   }
@@ -33,9 +33,9 @@ export const onBoardUser = async (request, response, next) => {
     } else {
       const prisma = getPrismaInstance();
       await prisma.user.create({
-        data: { email, name, about, profilePicture },
+        data: { email, name, about, profilePicture, lastOnline: new Date() },
       });
-        return response.success({  msg: "Success"}, StatusCodes.OK, ReasonPhrases.OK);
+        return response.success({ }, StatusCodes.OK, ReasonPhrases.OK);
     }
   } catch (error) {
     next(error);

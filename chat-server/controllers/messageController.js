@@ -42,7 +42,7 @@ export const getMessages = async (req, res, next) => {
         messageStatus: "read",
       },
     });
-    return response.success({  msg: "Retrived successfully", data: messages}, StatusCodes.OK, ReasonPhrases.OK);
+    return res.success({  msg: "Retrived successfully", data: messages}, StatusCodes.OK, ReasonPhrases.OK);
   } catch (err) {
     next(err);
   }
@@ -66,10 +66,10 @@ export const addMessage = async (req, res, next) => {
         include: { sender: true, reciever: true },
       });
     
-      return response.success({  msg: "Retrived successfully", data: messages}, StatusCodes.CREATED, ReasonPhrases.CREATED);
+      return res.success({  msg: "Retrived successfully", data: newMessage}, StatusCodes.CREATED, ReasonPhrases.CREATED);
     }
     
-    return response.error({  msg: "From, to and Message is required"}, StatusCodes.BAD_REQUEST, ReasonPhrases.BAD_REQUEST);
+    return res.error(StatusCodes.BAD_REQUEST, ReasonPhrases.BAD_REQUEST);
   } catch (err) {
     next(err);
   }
@@ -158,7 +158,7 @@ export const getInitialContactsWithMessages = async (req, res, next) => {
       });
     }
 
-    return response.success({  msg: "Retrived successfully", data: {
+    return res.success({  msg: "Retrived successfully", data: {
         users: Array.from(users.values()),
         onlineUsers: Array.from(onlineUsers.keys())
     }}, StatusCodes.OK, ReasonPhrases.OK);
