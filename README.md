@@ -10,12 +10,12 @@ node v18.17.0
 
 # Stack
 
-    React
-    Vite
-    Typescript
-    Tanstack/react-query
-    Expressjs
-    Prisma
+    React (lastest)
+    Vite (lastest)
+    Typescript 
+    Tanstack/react-query (lastest)
+    Expressjs (lastest)
+    Prisma (lastest)
 
 # Installation
 
@@ -33,7 +33,7 @@ Setup Server
 add environment variables in the server's .env file
 
 ```bash
-    PORT=3005
+    PORT=6060
     DATABASE_URL=<postgres databse url>
 ```
 
